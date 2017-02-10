@@ -5,19 +5,11 @@ var express = require('express')
   , path = require('path')
   , indexController = require('./controller/index');
 
-// Multer set uploaded image destination --------------------------------------------------------------------------------
-var storage = multer.diskStorage({
-  destination: (request, file, callback) => {
-    callback(null, './public/images')},
-  filename: (request, file, callback) => {
-    callback(null, file.originalname);
-}});
-
 var app = express();
 
 app.set('port', process.env.PORT || 3003);
 app.set('views', __dirname + '/views');
-app.set('public', __dirname + '/public/images');
+app.set('images', __dirname + '/public/images');
 app.set('partials', __dirname + '/views/partials');
 app.set('view engine', 'ejs');
 
@@ -38,7 +30,6 @@ router.route('/index').get( indexController.getIndex); // Get all customers
 
 
 app.use('/', router);
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
