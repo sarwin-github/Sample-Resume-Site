@@ -17,6 +17,7 @@ var app = express();
 
 app.set('port', process.env.PORT || 3003);
 app.set('views', __dirname + '/views');
+app.set('public', __dirname + '/public/images');
 app.set('partials', __dirname + '/views/partials');
 app.set('view engine', 'ejs');
 
