@@ -10,6 +10,7 @@ exports.getIndex = ((request, response) => {
 	var databaseLogo = ('public/images/database.png');
 	var FrameworkLogo = ('public/images/framework.png');
 	var resumeLogo = ('public/images/resume.png');
+	var aboutMe = ('public/images/about-me.png');
 
 	response.render('index.ejs',{ 
 		bg_image:bg_image, 
@@ -17,6 +18,7 @@ exports.getIndex = ((request, response) => {
 		webTechLogo:webTechLogo, 
 		databaseLogo:databaseLogo, 
 		FrameworkLogo:FrameworkLogo,
-		resumeLogo: resumeLogo });    
+		resumeLogo: resumeLogo,
+		aboutMe: aboutMe });    
 });
 
