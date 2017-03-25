@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var router = express.Router();
 
-router.route('/index').get( indexController.getIndex); // Get all customers
+router.route('/').get( indexController.getIndex); // Get all customers
 
 
 app.use('/', router);

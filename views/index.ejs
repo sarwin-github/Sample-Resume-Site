@@ -17,6 +17,7 @@
 	<script src="/js/bootstrap.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<style type="text/css">
+
 		.background {
 			position: relative;
 			background-color: rgba(45, 45, 45, 0.7);
@@ -46,173 +47,181 @@
 			background: rgba(94, 104, 127, 0.8);
 		}
 
-			.background:before {
-				content:'';
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				background:url('public/images/Background.jpg');
-				background-size: 100%;
-				z-index:-1;
-			}
+		.background:before {
+			content:'';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background:url('public/images/Background.jpg');
+			background-size: 100%;
+			z-index:-1;
+		}
 
-			.shadow-box{
-				-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.20);
-				-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.20);
-				box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.20);
-			}
+		.shadow-box{
+			-webkit-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
+			box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
+		}
+		.aboutMeStyle{
+			border-top: dashed 5px; 
+			border-bottom: dashed 5px; 
+			border-color: #D7DBE0;
+			border-radius: 10px;
+		}
+		.border-about{
+			border-radius: 10px 0px 0px 10px;
+			-moz-border-radius: 10px 0px 0px 10px;
+			-webkit-border-radius: 10px 0px 0px 10px;
+			border: 0px solid #000000;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
 
-		</style>
-		<script type="text/javascript">
-			$(document).ready(function() {
-
-				$(window).scroll(function () {
+			$(window).scroll(function () {
 		      //if you hard code, then use console
 		      //.log to determine when you want the 
 		      //nav bar to stick.  
 		      console.log($(window).scrollTop())
-		      if ($(window).scrollTop() > 350) {
+		      if ($(window).scrollTop() > 120) {
 		      	$('#nav_bar').addClass('navbar-fixed-top');
 		      }
-		      if ($(window).scrollTop() < 350) {
+		      if ($(window).scrollTop() < 120) {
 		      	$('#nav_bar').removeClass('navbar-fixed-top');
 		      }
 		  });
 
-				$("#Profile #About #Resume").on('click','a', function(event){ 
-					event.preventDefault();
-					var o =  $( $(this).attr("href") ).offset();   
-					var sT = o.top - $("#nav_bar").outerHeight(true); 
-					window.scrollTo(0,sT);
-				});
+			$("#Profile #About #Resume").on('click','a', function(event){ 
+				event.preventDefault();
+				var o =  $( $(this).attr("href") ).offset();   
+				var sT = o.top - $("#nav_bar").outerHeight(true); 
+				window.scrollTo(0,sT);
 			});
-		</script>
-	</head>
-	<body>
-		<div>
-			<div class="background" style="color: white; background-size: 100%;">
-				<div class="container text-center">
-					<hr />
-					<img src="/<%=profile%>" class="img-circle" alt="Cinque Terre" width="120"> 
-					<h2>DAPITO, SHERWIN A.</h2>
-					<p>Web Developer/Software Developer</p> 
-					<hr />
-				</div>
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<div class="background" style="color: white; background-size: 100%;">
+			<div class="container text-center">
+				<hr />
+				<img src="/<%=profile%>" class="img-circle" alt="Cinque Terre" width="120"> 
+				<h2>DAPITO, SHERWIN A.</h2>
+				<p>Web Developer/Software Developer</p> 
+				<hr />
 			</div>
-			<%- include partials/navigation.ejs %>
+		</div>
+		<%- include partials/navigation.ejs %>
+	</div>
+
+	<div class="container">
+		<div class="row">
+
 		</div>
 	</div>
-	<div class="container" style="background-color: whitesmoke;" a id="About">
-		<%- include partials/profile.ejs %>
+
+	<% include partials/about-me.ejs %>
+<br>	
+	<div class="container-fluid aboutMeStyle">
+		<div class="row">
+			<br class="visible-xs">
+			<div >
+				<!-- RESUME/ WHO AM I? -->
+				<div class="container" style="background-color:white;">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 text-center" style="padding: 30px;" >
+							<h3 style="color: rgb(216, 45, 72);">WHO AM I?</h3>
+							<h4><b>A Computer Engineering Graduate from Philippines</b></h4>
+							<p>Have almost two years of experience in the field of Web Application Development</p>
+							<hr>
+						</div>	
+						<% include partials/profile.ejs %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="container-fluid aboutMeStyle">
+		<div class="row">
+			<br class="visible-xs">
+			<div >
+				<!-- WHAT CAN I DO -->
+				<div class="container" style="background-color:white;">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 text-center" style="padding: 30px;" >
+							<h3 style="color: rgb(216, 45, 72);">WHAT CAN I DO?</h3>
+							<h4><b>A Versatile Web Application Developer</b></h4>
+							<p>A coder with broad knowledge in different software development frameworks and versatile in learning new technology and frameworks</p>
+							<hr>
+						</div>	
+			
+						<div class="col-md-12 col-sm-12" >
+							<% include partials/skills.ejs %>
+						</div>
+						<hr>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+<!-- Resume -->
+<br>
+<div class="container-fluid aboutMeStyle">
+	<div class="row">
 		<br class="visible-xs">
-		<%- include partials/about-me.ejs %>
+		<div >
+			<!-- WHAT CAN I DO -->
+			<div class="container" style="background-color:white;">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 text-center" style="padding: 30px;" >
+						<h3 style="color: rgb(216, 45, 72);">Contact Me</h3>
+						<hr>
+					</div>	
+		
+					<div class="col-md-8 col-sm-8" >
+						<% include partials/contact-me%>
+					</div>
+					<div class="col-md-4 col-sm-4 text-center" >
+						<div>
+							<h3><strong>Where To Meet?</strong> </h3>
+						</div>
+						<!-- Personal Info -->
+						<div style="color: #515557;">
+							<p>Tayabas City</p>
+							<p>Quezon Philippines</p>
+						</div>
+						<hr>
+						<div>
+							<h3><strong>Say Hello</strong> </h3>
+						</div>
+						<!-- Personal Info -->
+						<div style="color: #515557;">
+							<p><strong>Email: </strong> dapito.sherwin@yahoo.com</p>
+							<p><strong>Phone: </strong>+639-19-294-2997</p>
+						</div>
+						<hr>
+
+						<div>
+							<p><a href='#'>Google Maps <span class="glyphicon glyphicon-arrow-right"></span></a></p>
+							<img src="/public/images/Google-Maps-icon.png" width="100" />
+						</div>
+						<hr>
+
+					</div>
+					<hr>
+				<br>
+			</div>
+		</div>
 	</div>
 </div>
-<br>	
-<!-- Resume -->
-<div class="back-grad-blue">
-	<div class="col-sm-12 container-fluid" style="padding: 0px;" a id="Resume">
-		<div class="well back-grad-blue2 shadow-box">
-			<div class="text-center">
-				<img src="/<%=resumeLogo%>" class="img-circle" alt="Cinque Terre" width="120"> 
-			</div>
-			<h3 class="text-center"><strong><span>S</span><span style="font-size: 19px;">KILLS</span> </strong> 
-				<span style="font-size: 19px">& EXPERIENCE</span>
-			</h3>
-		</div>
-		<hr>
-	</div>
+</div>
 
-	<div class="container-fluid back-grad-blue3" style="padding-left: 0px; padding-right: 0px;">
-		<div class="container">
-			<div class="col-sm-5">
-				<div >
-					<legend ><strong><span>E</span><span style="font-size: 19px;">DUCATIONAL</span> </strong> 
-						<span style="font-size: 19px">BACKGROUND</span></legend>
-						<table>
-							<tr>
-								<td>Bachelor of Science in <strong class="text-info">Computer Engineering <strong></td>
-							</tr>
-							<tr>
-								<td>Southern Luzon State University</td>
-							</tr>
-							<tr>
-								<td>Lucban, Quezon</td>
-							</tr>
-						</table>
-						<br>
-						<legend><strong><span>L</span><span style="font-size: 19px;">ANGUAGE</span> </strong> 
-							<span style="font-size: 19px">SKILLS</span></legend>
-							<table>
-								<tr>
-									<td>English: Fluent</td>
-								</tr>
-								<tr>
-									<td>Tagalog: Native Language</td>
-								</tr>
-							</table>
-							<br>
-						</div>
-					</div>
 
-					<div class="col-sm-7">
-						<legend class="text-center"><strong><span>A</span><span style="font-size: 19px;">DDITIONAL</span> </strong> 
-							<span style="font-size: 19px">SKILLS</span></legend>
-							<div class="col-sm-4">
-								<h4 class="text-center"><strong>Communication</strong></h4>
-								<div class="progress-circle over50 p88">
-									<span>88%</span>
-									<div class="left-half-clipper">
-										<div class="first50-bar"></div>
-										<div class="value-bar"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<h4 class="text-center"><strong>Versatility</strong></h4>
-								<div class="progress-circle over50 p89">
-									<span>89%</span>
-									<div class="left-half-clipper">
-										<div class="first50-bar"></div>
-										<div class="value-bar"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<h4 class="text-center"><strong>Determination</strong></h4>
-								<div class="progress-circle over50 p90">
-									<span>90%</span>
-									<div class="left-half-clipper">
-										<div class="first50-bar"></div>
-										<div class="value-bar"></div>
-									</div>
-								</div>
-							</div>
-						</div>
+<% include partials/footer.ejs %>
 
-					</div>
-				</div>
-				<hr>
-				<%- include partials/skills.ejs %>
-				<div class="container">
-					<div class="col-sm-12">
-						<%- include partials/timeline.ejs %>
-					</div>
-				</div>
-			</div>
-
-			<div class="container-fluid back-grad-bluish">
-				<footer class="container">
-					<div class="row">
-						<div class="panel-primary">
-							<div class="panel-body text-right">
-								<p style="color:whitesmoke;">©2017 Powered by Heroku. All Rights Reserved.</p>
-							</div>
-						</div>
-					</div>
-				</footer>
-			</div>
-		</body>
-		</html>
+</body>
+</html>
