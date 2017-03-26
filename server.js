@@ -1,9 +1,10 @@
-var express = require('express')
+const express = require('express')
   , multer = require('multer') 
   , bodyParser = require('body-parser')
   , http = require('http')
   , path = require('path')
-  , indexController = require('./controller/index');
+  , indexController = require('./controller/index')
+  , nodemailer = require('nodemailer');
 
 var app = express();
 
@@ -26,9 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var router = express.Router();
 
-router.route('/').get( indexController.getIndex); // Get all customers
-
-
+router.route('/').get( indexController.getIndex); //Get Initial page
+router.route('/').post( indexController. sendMail);
 app.use('/', router);
 
 http.createServer(app).listen(app.get('port'), function(){
