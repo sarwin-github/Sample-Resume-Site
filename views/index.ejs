@@ -103,7 +103,7 @@
 	</script>
 </head>
 <body>
-	<div>
+	<div a id="Profile">
 		<div class="background" style="color: white; background-size: 100%;">
 			<div class="container text-center">
 				<hr />
@@ -116,15 +116,11 @@
 		<%- include partials/navigation.ejs %>
 	</div>
 
-	<div class="container">
-		<div class="row">
-
-		</div>
+	<div a id="About">
+		<% include partials/about-me.ejs %>
 	</div>
-
-	<% include partials/about-me.ejs %>
 <br>	
-	<div class="container-fluid aboutMeStyle">
+	<div class="container-fluid aboutMeStyle" a id="Resume">
 		<div class="row">
 			<br class="visible-xs">
 			<div >
@@ -170,10 +166,10 @@
 	</div>
 <!-- Resume -->
 <br>
-<div class="container-fluid aboutMeStyle">
+<div class="container-fluid aboutMeStyle" a id="contact-me">
 	<div class="row">
 		<br class="visible-xs">
-		<div >
+		<div>
 			<!-- WHAT CAN I DO -->
 			<div class="container" style="background-color:white;">
 				<div class="row">
