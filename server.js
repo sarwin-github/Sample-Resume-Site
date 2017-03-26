@@ -29,6 +29,7 @@ var router = express.Router();
 
 router.route('/').get( indexController.getIndex); //Get Initial page
 router.route('/').post( indexController. sendMail);
+router.route('/download').get( indexController. downloadResume);
 app.use('/', router);
 
 http.createServer(app).listen(app.get('port'), function(){

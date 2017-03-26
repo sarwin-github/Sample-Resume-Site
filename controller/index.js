@@ -41,10 +41,10 @@ exports.sendMail 		= ((req, res) => {
 		host: "smtp.gmail.com", //Host name
 		secureConnection: true, //use Secure Shell
 		port: 465, //port for secure SMTP
-			auth: {
-				user: 'dapito.sherwin@gmail.com',
-				pass: 'liolwyxvpxnmvuse'
-			}
+		auth: {
+			user: 'dapito.sherwin@gmail.com',
+			pass: 'liolwyxvpxnmvuse'
+		}
 	});
 
 	mailOptions = {
@@ -68,7 +68,11 @@ exports.sendMail 		= ((req, res) => {
 			aboutMe: aboutMe,
 			message: 'Email Sent' });  
 	});
-  
+
 });
 
+module.exports.downloadResume = ((req, res) => {
+	var file = __dirname + '/../public/resumeFolder/SherwinDapito-CV.pdf';
+	res.download(file);
 
+});
