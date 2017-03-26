@@ -43,7 +43,7 @@ exports.sendMail 		= ((req, res) => {
 		port: 465, //port for secure SMTP
 		auth: {
 			user: 'dapito.sherwin@gmail.com',
-			pass: 'liolwyxvpxnmvuse'
+			pass: 'wovxrbmhhcbqoidu'
 		}
 	});
 
@@ -53,20 +53,23 @@ exports.sendMail 		= ((req, res) => {
 		subject: req.body.subject, 
 		text: req.body.message + '\n \nFrom: ' + req.body.name  + ' \nEmail: ' + req.body.email
 	}
-
+	console.log('Sending Email')
 	smtpTransport.sendMail(mailOptions, function(err, res, req){
 		if(err){
 			return res.render('index', {message: `Error encountered while sending email: ${err}` });
 		} 
-		res.render('index.ejs',{ 
-			bg_image:bg_image, 
-			profile:profile, 
-			webTechLogo:webTechLogo, 
-			databaseLogo:databaseLogo, 
-			FrameworkLogo:FrameworkLogo,
-			resumeLogo: resumeLogo,
-			aboutMe: aboutMe,
-			message: 'Email Sent' });  
+		else{
+			console.log('Email has been sent.');
+			res.render('index.ejs',{ 
+				bg_image:bg_image, 
+				profile:profile, 
+				webTechLogo:webTechLogo, 
+				databaseLogo:databaseLogo, 
+				FrameworkLogo:FrameworkLogo,
+				resumeLogo: resumeLogo,
+				aboutMe: aboutMe,
+				message: 'Email Sent' });  
+		}
 	});
 
 });
