@@ -1,20 +1,21 @@
-const express = require('express')
-  , multer = require('multer') 
+const express  = require('express')
+  , multer     = require('multer') 
   , bodyParser = require('body-parser')
-  , http = require('http')
-  , path = require('path')
+  , http       = require('http')
+  , path       = require('path')
   , indexController = require('./controller/index')
-  , nodemailer = require('nodemailer');
+  , nodemailer = require('nodemailer')
+  , favicon    = require('serve-favicon');
 
 var app = express();
 
 app.set('port', process.env.PORT || 3003);
 app.set('views', __dirname + '/views');
 app.set('images', __dirname + '/public/images');
-app.set('partials', __dirname + '/views/partials');
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
